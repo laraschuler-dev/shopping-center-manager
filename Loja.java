@@ -1,18 +1,24 @@
-public class Loja{
+public class Loja {
     private String nome;
     private int quantidadeFuncionarios;
     private double salarioBaseFuncionario;
+    public Endereco endereco;
+    public Data dataFundacao;
 
-    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario) {
+    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco, Data dataFundacao) {
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = salarioBaseFuncionario;
+        this.endereco = endereco;
+        this.dataFundacao = dataFundacao;
     }
 
-    public Loja(String nome, int quantidadeFuncionarios){
+    public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao) {
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = -1;
+        this.endereco = endereco;
+        this.dataFundacao = dataFundacao;
     }
 
     public String getNome() {
@@ -39,26 +45,44 @@ public class Loja{
         this.salarioBaseFuncionario = salarioBaseFuncionario;
     }
 
-    public double gastosComSalario(){
-        if(salarioBaseFuncionario == -1)
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Data getDataFundacao() {
+        return dataFundacao;
+    }
+
+    public void setDataFundacao(Data dataFundacao) {
+        this.dataFundacao = dataFundacao;
+    }
+
+    public double gastosComSalario() {
+        if (salarioBaseFuncionario == -1)
             return -1;
-        else 
+        else
             return quantidadeFuncionarios * salarioBaseFuncionario;
     }
 
-    public char tamanhoDaLoja(){
-        if(quantidadeFuncionarios < 10)
+    public char tamanhoDaLoja() {
+        if (quantidadeFuncionarios < 10)
             return 'P';
-        else if(quantidadeFuncionarios >= 10 && quantidadeFuncionarios <= 30)
+        else if (quantidadeFuncionarios >= 10 && quantidadeFuncionarios <= 30)
             return 'M';
-        else 
+        else
             return 'G';
     }
 
     @Override
     public String toString() {
-        return "Loja [nome=" + nome + ", quantidadeFuncionarios=" + quantidadeFuncionarios + ", salarioBaseFuncionario R$="
-                + salarioBaseFuncionario + "]";
+        return "Loja [nome=" + nome + ", quantidadeFuncionarios=" + quantidadeFuncionarios + ", salarioBaseFuncionario="
+                + salarioBaseFuncionario + ", endereco=" + endereco + ", dataFundacao=" + dataFundacao + "]";
     }
+
+    
 
 }
