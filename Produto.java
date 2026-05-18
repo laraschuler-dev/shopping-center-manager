@@ -35,7 +35,7 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "Produto: [nome: " + nome + ", preço: R$ " + preco + "]";
+        return "Produto [nome=" + nome + ", preco=" + preco + ", dataValidade=" + dataValidade + "]";
     }
 
     public boolean estaVencido(Data data) {

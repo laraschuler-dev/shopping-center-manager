@@ -4,6 +4,7 @@ public class Data {
     private int ano;
 
     public Data(int dia, int mes, int ano) {
+        this.ano = ano;
 
         if (verificaMes(mes) && verificaDia(dia, mes)) {
             this.dia = dia;
