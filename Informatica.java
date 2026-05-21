@@ -1,9 +1,14 @@
 public class Informatica extends Loja {
     private double seguroEletronicos;
 
-    public Informatica(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco,
-            Data dataFundacao, double seguroEletronicos) {
-        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao);
+    public Informatica(String nome,
+            int quantidadeFuncionarios,
+            double salarioBaseFuncionario,
+            Endereco endereco,
+            Data dataFundacao,
+            double seguroEletronicos,
+            int quantidadeMaximaProdutos) {
+        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao, quantidadeMaximaProdutos);
         this.seguroEletronicos = seguroEletronicos;
     }
 
@@ -17,10 +22,14 @@ public class Informatica extends Loja {
 
     @Override
     public String toString() {
-        return "Loja [nome=" + super.getNome() + ", quantidadeFuncionarios=" + super.getQuantidadeFuncionarios()
-                + ", salarioBaseFuncionario="
-                + super.getSalarioBaseFuncionario() + ", endereco=" + super.getEndereco() + ", dataFundacao="
-                + super.getDataFundacao() + ", seguroEletronicos=" + seguroEletronicos + " ]";
+        return "Informatica {" +
+                "\n nome = " + super.getNome() +
+                "\n quantidadeFuncionarios = " + super.getQuantidadeFuncionarios() +
+                "\n salarioBaseFuncionario = " + super.getSalarioBaseFuncionario() +
+                "\n endereco = " + super.getEndereco() +
+                "\n dataFundacao = " + super.getDataFundacao() +
+                "\n seguroEletronicos = " + seguroEletronicos +
+                "\n}";
     }
 
 }

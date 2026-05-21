@@ -1,9 +1,14 @@
 public class Cosmetico extends Loja {
     private double taxaComercializacao;
 
-    public Cosmetico(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco,
-            Data dataFundacao, double taxaComercializacao) {
-        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao);
+    public Cosmetico(String nome,
+                 int quantidadeFuncionarios,
+                 double salarioBaseFuncionario,
+                 Endereco endereco,
+                 Data dataFundacao,
+                 double taxaComercializacao,
+                 int quantidadeMaximaProdutos) {
+        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao, quantidadeMaximaProdutos);
         this.taxaComercializacao = taxaComercializacao;
     }
 
@@ -16,11 +21,15 @@ public class Cosmetico extends Loja {
     }
 
     @Override
-    public String toString() {
-        return "Loja [nome=" + super.getNome() + ", quantidadeFuncionarios=" + super.getQuantidadeFuncionarios()
-                + ", salarioBaseFuncionario="
-                + super.getSalarioBaseFuncionario() + ", endereco=" + super.getEndereco() + ", dataFundacao="
-                + super.getDataFundacao() + ", taxaComercializacao=" + taxaComercializacao + " ]";
-    }
+public String toString() {
+    return "Cosmetico {" +
+            "\n nome = " + super.getNome() +
+            "\n quantidadeFuncionarios = " + super.getQuantidadeFuncionarios() +
+            "\n salarioBaseFuncionario = " + super.getSalarioBaseFuncionario() +
+            "\n endereco = " + super.getEndereco() +
+            "\n dataFundacao = " + super.getDataFundacao() +
+            "\n taxaComercializacao = " + taxaComercializacao +
+            "\n}";
+}
 
 }

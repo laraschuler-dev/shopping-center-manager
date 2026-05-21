@@ -61,11 +61,16 @@ public class Principal {
                 int ano = sc.nextInt();
                 sc.nextLine();
 
+                System.out.println("Informe a quantidade máxima de produtos: ");
+                int quantidadeMaximaProdutos = sc.nextInt();
+                sc.nextLine();
+
                 Endereco endereco = new Endereco(rua, cidade, estado, pais, cep, numero, complemento);
 
                 Data dataFundacao = new Data(dia, mes, ano);
 
-                loja = new Loja(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao);
+                loja = new Loja(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao,
+                        quantidadeMaximaProdutos);
 
             } else if (op == 2) {
 

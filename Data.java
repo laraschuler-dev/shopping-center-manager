@@ -1,17 +1,21 @@
 public class Data {
+
     private int dia;
     private int mes;
     private int ano;
 
     public Data(int dia, int mes, int ano) {
-        this.ano = ano;
 
-        if (verificaMes(mes) && verificaDia(dia, mes)) {
+        if (verificaMes(mes) && verificaDia(dia, mes, ano)) {
+
             this.dia = dia;
             this.mes = mes;
             this.ano = ano;
+
         } else {
-            System.out.println("Data Inválida");
+
+            System.out.println("Data inválida");
+
             this.dia = 1;
             this.mes = 1;
             this.ano = 2000;
@@ -44,26 +48,36 @@ public class Data {
 
     @Override
     public String toString() {
-        return "Data: " + dia + "/" + mes + "/" + ano;
+        return dia + "/" + mes + "/" + ano;
     }
 
     public boolean verificaAnoBissexto() {
+        return verificaAnoBissexto(ano);
+    }
+
+    private boolean verificaAnoBissexto(int ano) {
+
         if (ano % 4 == 0) {
+
             if (ano % 100 == 0) {
+
                 if (ano % 400 == 0) {
                     return true;
                 } else {
                     return false;
                 }
+
             } else {
                 return true;
             }
+
         } else {
             return false;
         }
     }
 
     private boolean verificaMes(int mes) {
+
         if (mes >= 1 && mes <= 12) {
             return true;
         } else {
@@ -71,31 +85,44 @@ public class Data {
         }
     }
 
-    private boolean verificaDia(int dia, int mes) {
-        if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+    private boolean verificaDia(int dia, int mes, int ano) {
+
+        if (mes == 1 || mes == 3 || mes == 5 || mes == 7 ||
+                mes == 8 || mes == 10 || mes == 12) {
+
             if (dia >= 1 && dia <= 31) {
                 return true;
             } else {
                 return false;
             }
+
         } else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+
             if (dia >= 1 && dia <= 30) {
                 return true;
             } else {
                 return false;
             }
+
         } else if (mes == 2) {
-            if (verificaAnoBissexto()) {
+
+            if (verificaAnoBissexto(ano)) {
+
                 if (dia >= 1 && dia <= 29) {
                     return true;
                 } else {
                     return false;
                 }
-            } else if (dia >= 1 && dia <= 28) {
-                return true;
+
             } else {
-                return false;
+
+                if (dia >= 1 && dia <= 28) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
+
         } else {
             return false;
         }

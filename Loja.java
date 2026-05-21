@@ -1,24 +1,35 @@
+import java.util.Arrays;
+
 public class Loja {
     private String nome;
     private int quantidadeFuncionarios;
     private double salarioBaseFuncionario;
-    public Endereco endereco;
-    public Data dataFundacao;
+    private Endereco endereco;
+    private Data dataFundacao;
+    private Produto[] estoqueProdutos;
+    private int quantidadeMaximaProdutos;
 
-    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco, Data dataFundacao) {
+    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco,
+            Data dataFundacao, int quantidadeMaximaProdutos) {
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = salarioBaseFuncionario;
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;
+        this.quantidadeMaximaProdutos = quantidadeMaximaProdutos;
+        this.estoqueProdutos = new Produto[quantidadeMaximaProdutos];
     }
 
-    public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao) {
+    public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao,
+            int quantidadeMaximaProdutos) {
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = -1;
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;
+        this.quantidadeMaximaProdutos = quantidadeMaximaProdutos;
+        this.estoqueProdutos = new Produto[quantidadeMaximaProdutos];
+
     }
 
     public String getNome() {
@@ -61,6 +72,22 @@ public class Loja {
         this.dataFundacao = dataFundacao;
     }
 
+    public Produto[] getEstoqueProdutos() {
+        return estoqueProdutos;
+    }
+
+    public void setEstoqueProdutos(Produto[] estoqueProdutos) {
+        this.estoqueProdutos = estoqueProdutos;
+    }
+
+    public int getQuantidadeMaximaProdutos() {
+        return quantidadeMaximaProdutos;
+    }
+
+    public void setQuantidadeMaximaProdutos(int quantidadeMaximaProdutos) {
+        this.quantidadeMaximaProdutos = quantidadeMaximaProdutos;
+    }
+
     public double gastosComSalario() {
         if (salarioBaseFuncionario == -1)
             return -1;
@@ -78,11 +105,56 @@ public class Loja {
     }
 
     @Override
-    public String toString() {
-        return "Loja [nome=" + nome + ", quantidadeFuncionarios=" + quantidadeFuncionarios + ", salarioBaseFuncionario="
-                + salarioBaseFuncionario + ", endereco=" + endereco + ", dataFundacao=" + dataFundacao + "]";
+public String toString() {
+    return "Loja [nome=" + nome
+            + ", quantidadeFuncionarios=" + quantidadeFuncionarios
+            + ", salarioBaseFuncionario=" + salarioBaseFuncionario
+            + ", endereco=" + endereco
+            + ", dataFundacao=" + dataFundacao
+            + ", estoqueProdutos=" + Arrays.toString(estoqueProdutos)
+            + "]";
+}
+
+    public void imprimeProdutos() {
+
+        for (int i = 0; i < estoqueProdutos.length; i++) {
+
+            if (estoqueProdutos[i] != null) {
+
+                System.out.println(estoqueProdutos[i]);
+            }
+        }
     }
 
-    
+    public boolean insereProduto(Produto produto) {
+
+        for (int i = 0; i < estoqueProdutos.length; i++) {
+
+            if (estoqueProdutos[i] == null) {
+
+                estoqueProdutos[i] = produto;
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean removeProduto(String nomeProduto) {
+
+        for (int i = 0; i < estoqueProdutos.length; i++) {
+
+            if (estoqueProdutos[i] != null &&
+                    estoqueProdutos[i].getNome().equals(nomeProduto)) {
+
+                estoqueProdutos[i] = null;
+
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 }
